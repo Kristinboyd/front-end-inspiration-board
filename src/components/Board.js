@@ -11,7 +11,7 @@ const Board = (props) => {
                 title: props.title,
                 owner: props.owner
             };
-            props.onSubmit(defaultBoard);
+            // props.onSubmit(defaultBoard);
         }
         return(
             <div>

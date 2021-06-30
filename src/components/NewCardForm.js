@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import './Card.css'//this import obvi may need to change
 
-const Card = (props) => {
+const newCard = (props) => {
     const onCardSubmit = () => {
         const defaultInspo = {
             id: props.id,
@@ -27,14 +27,14 @@ const Card = (props) => {
         </div>
     );
 };
-Card.propTypes = {
+newCard.propTypes = {
     id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired, 
     boardGroup: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired
 };
-export default Card;
+export default newCard;
 //this is a controlled form for every input(might want to put it in a new file?), 
 //everytime it handles an event, it update's the component's state
 //this code was referenced from controlled forms in our lessons so I hope it isn't too 
