@@ -14,7 +14,7 @@ const NewBoard = () => {
         // figure out CORS here
         
     }
-}
+
 
     return (
         <section className="new-boardform">
@@ -25,21 +25,24 @@ const NewBoard = () => {
                     <input 
                     type='text'
                     name='title'
-                    value={title}}
+                    value={title}
                     onChange={(e) => setTitle(e.target.values)} />
 
                     <p>Owner's Name</p>
                     <input 
                     type='text'
                     name='owner'
-                    value={owner}}
+                    value={owner}
                     onChange={(e) => setOwner(e.target.values)} />
 
                     <input
                     className='form-submit-button'
                     value='submit'
-                    
+                    type='submit' />
                 </form>
             </div>
         </section>
-    )
+    );
+}
+
+export default NewBoard;
