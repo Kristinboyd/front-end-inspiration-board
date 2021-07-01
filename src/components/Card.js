@@ -1,13 +1,36 @@
-const Card = (props) => {
-  return (<div className='card-item'>
+// edited 
 
-    <p className='card-item__message'>{props.card.message}</p>
-    <ul className='card-item__controls'>
-      <li><p>{props.card.likes_count} 💌 </p></li>
-      <li><p onCLick={() => props.plusOneCardItem(props.card)}>add love</p></li>
-      <li><p className='card-item__delete' onClick={() => props.deleteCardItem(props.card)}>Delete</p></li>
-    </ul>
-  </div>);
-};
+import { React, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import "./Card.css"
+
+const Card = (props) => {
+
+    // state: passed back to board?
+    // number of upvotes
+    // delete
+    
+
+    return (
+        <div className='card'>
+            <div className='card__content'>
+                <p className='card__content-text'>{props.text}</p>
+            </div>
+            <div className='card__delete'>
+                <button className='card__delete-button'
+                onClick={() => props.deleteCard(props.id)}>
+                    Delete
+                </button>
+            </div>
+        </div>
+    );
+}
+
+Card.propTypes = {
+        id: PropTypes.number,
+        text: PropTypes.string,
+        deleteCard: PropTypes.func.isRequired,
+}
+
 
 export default Card;
