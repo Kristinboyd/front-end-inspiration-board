@@ -1,5 +1,3 @@
-// edited
-
 import './App.css';
 
 import { React, useEffect, useState } from 'react';
@@ -28,14 +26,14 @@ function App() {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:5000/boards", {
+    axios.get("https://wm-inspo-board.herokuapp.com/boards", {
     }).then((response) => {
       setBoards(response.data);
     })
   }, []);
 
   const onFormSubmit = (newBoard) => {
-    axios.post("http://localhost:5000/boards", newBoard).then((response) => {
+    axios.post("https://wm-inspo-board.herokuapp.com/boards", newBoard).then((response) => {
       const currentBoards= [...boards];
       currentBoards.push(response.data);
       setBoards(currentBoards);

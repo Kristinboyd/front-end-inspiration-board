@@ -1,7 +1,3 @@
-// edited 
-
-
-
 import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -16,7 +12,7 @@ const Board = (props) => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [currentBoard, updateBoard] = useState(props.boardName);
 
-    const BASE_URL = 'https://hacky-saac-inspiration-board.herokuapp.com/';
+    const BASE_URL = 'https://wm-inspo-board.herokuapp.com/';
 
 
     // function to obtain promises to update states
@@ -110,7 +106,7 @@ const Board = (props) => {
     }
 
     // if currentBoard changed
-
+    //it doesn't look like function below is referneced, investigate why team lfg***************************
     const changeCurrentBoard = (boardName) => {  
         updateBoard(boardName);
     }
@@ -127,8 +123,7 @@ const Board = (props) => {
 
     const createNewCard = (message) => {
         axios.post(
-            // TODO: Change URI to ENV variable
-            `http://localhost:5000/boards/${props.board.board_id}/cards`,
+            `https://wm-inspo-board.herokuapp.com/boards/${props.board.board_id}/cards`,
             {message}
         ).then((response) => {
             const cards = [...cardsList];

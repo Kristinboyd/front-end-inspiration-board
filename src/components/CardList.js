@@ -1,7 +1,4 @@
-// edited 
-
 import PropTypes from 'prop-types'
-//import Card from './components/Card'
 import "./CardList.css"
 
 
