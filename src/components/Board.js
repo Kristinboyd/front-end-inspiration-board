@@ -3,7 +3,7 @@
 //for app: All error messages can look like a new section on the screen, a red outline around the input field, and/or disabling the input, as long as it's visible
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-// import './Board.js'//this import obvi may need to change
+// import './Board.css'//this import obvi may need to change
 const Board = (props) => {
         const onBoardSubmit = () => {
             const defaultInspo = {

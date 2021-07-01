@@ -30,3 +30,17 @@ function App() {
 
 
 export default App;
+//return for whichever part of function that displays card list
+return (
+  <main>
+      <h1>Attendance</h1>
+      <StudentList
+          cards={cardData}
+          onUpdateStudent={updateStudentData}
+          ></StudentList>
+      <NewStudentForm></NewStudentForm>
+  </main>
+);
+}
+
+export default App;
