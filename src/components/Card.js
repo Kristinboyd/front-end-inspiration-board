@@ -31,7 +31,7 @@ Card.propTypes = {
         text: PropTypes.string,
         deleteCard: PropTypes.func.isRequired,
         likeCard: PropTypes.func.isRequired,
-        likes: PropTypes.number.isRequired
+        likes: PropTypes.number
 }
 
 

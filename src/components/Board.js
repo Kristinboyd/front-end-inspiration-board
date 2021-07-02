@@ -68,10 +68,6 @@ const Board = (props) => {
         setErrorMessage(['Failed to add card.']);
         console.log(error.message);
         });
-
-
-
-
     }
 
     // delete a card from cardsList
@@ -91,9 +87,9 @@ const Board = (props) => {
                     setErrorMessage([`Could not delete card ${id}.`]);
                 });
             } else {
-                newCardsList.push(item);
+                newCardsList.push(item); 
             }
-            // note: fails silently if you pass a nonexistent id number
+            // note: fails silently if you pass a nonexistent id number. aaaaand that's the issue/ okay look at prop types
         }
         setCardsList(newCardsList);
     }
