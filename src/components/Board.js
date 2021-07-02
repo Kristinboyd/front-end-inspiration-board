@@ -95,7 +95,32 @@ const Board = (props) => {
             }
             // note: fails silently if you pass a nonexistent id number
         }
+        setCardsList(newCardsList);
+    }
 
+    // like a card from cardsList
+    const likeCard = (id) => {
+        let newCardsList = [];
+        for (const item of cardsList) {
+            // cardsList is pulled from the API, meaning anything in cardsList should ideally have a matching id
+            if(id === item.card_id) {
+                axios.put(`${BASE_URL}boards/${currentBoard.board_id}/cards/${id}/like`)
+                // if successful, send confirmation to console
+                .then((response) => {
+                    console.log(`Card ${id} successfully liked`);
+                    item.likes = item.likes + 1;
+                    setErrorMessage(null);
+                })
+                .catch((error) => {
+                    setErrorMessage([`Could not like card ${id}.`]);
+                });
+                newCardsList.push(item);
+            } else {
+                // retain all the cards we're not liking as-is
+                newCardsList.push(item);
+            }
+            // note: fails silently if you pass a nonexistent id number
+        }
         setCardsList(newCardsList);
     }
 
@@ -105,7 +130,7 @@ const Board = (props) => {
         let cardsList = [];
 
         for(const item of cards) {
-            cardsList.push(<Card id={item.card_id} key={item.card_id} text={item.message} deleteCard={deleteCard}/>);
+            cardsList.push(<Card id={item.card_id} likes={item.likes} key={item.card_id} text={item.message} deleteCard={deleteCard} likeCard={likeCard}/>);
         }
         return cardsList;
     }
