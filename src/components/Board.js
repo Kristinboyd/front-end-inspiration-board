@@ -14,18 +14,18 @@ const Board = (props) => {
     const [allBoards, updateBoards] = useState([]);
     const [cardsList, setCardsList] = useState([]);
     const [errorMessage, setErrorMessage] = useState(null);
-    const [currentBoard, updateBoard] = useState(props.boardName);
+    const [currentBoard, updateBoard] = useState(props.board);
 
-    const BASE_URL = 'https://hacky-saac-inspiration-board.herokuapp.com/';
+    const BASE_URL = 'https://wm-inspo-board.herokuapp.com/';
 
 
     // function to obtain promises to update states
     const BoardState = useCallback(() => {
-        return(axios.get(BASE_URL));
+        return(axios.get(`${BASE_URL}boards/`));
     },[BASE_URL])
 
     const CardState = useCallback(() => {
-        return(axios.get(`${BASE_URL}${currentBoard}/cards`));
+        return(axios.get(`${BASE_URL}boards/${currentBoard.board_id}/cards`));
     },[currentBoard, BASE_URL])
 
 
@@ -50,7 +50,7 @@ const Board = (props) => {
         axios.post(`${BASE_URL}${card.boardName}/cards`, post)
         .then( (response) => {
         // only add card to board if the post is for this particular board
-        if(card.boardName === currentBoard) {
+        if(card.boardName === currentBoard.title) {
             const newId = response.data.card.id;
         
             newCardList.push({
@@ -80,7 +80,7 @@ const Board = (props) => {
         for (const item of cardsList) {
         // cardsList is pulled from the API, meaning anything in cardsList should ideally have a matching id
         if(id === item.card.id) {
-            axios.delete(`${BASE_URL}/${id}`)
+            axios.delete(`${BASE_URL}boards/${currentBoard.board_id}/cards/${id}`)
             // if successful, deleted, send confirmation to console
             .then((response) => {
                 console.log(`Card ${id} successfully deleted`);
@@ -104,7 +104,7 @@ const Board = (props) => {
         let cardsList = [];
 
         for(const item of cards) {
-            cardsList.push(<Card id={item.card_id} text={item.message} deleteCard={deleteCard}/>);
+            cardsList.push(<Card id={item.card_id} key={item.card_id} text={item.message} deleteCard={deleteCard}/>);
         }
         return cardsList;
     }
@@ -128,7 +128,7 @@ const Board = (props) => {
     const createNewCard = (message) => {
         axios.post(
             // TODO: Change URI to ENV variable
-            `http://localhost:5000/boards/${props.board.board_id}/cards`,
+            `https://wm-inspo-board.herokuapp.com/boards/${props.board.board_id}/cards`,
             {message}
         ).then((response) => {
             const cards = [...cardsList];
@@ -155,8 +155,7 @@ const Board = (props) => {
     )
     };
     Board.propTypes = {
-    url: PropTypes.string.isRequired,
-    boardName: PropTypes.string.isRequired
+        board: PropTypes.object.isRequired
     };
 
     export default Board;

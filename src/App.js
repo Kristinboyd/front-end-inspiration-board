@@ -23,19 +23,19 @@ function App() {
   const boardsElements = boards.map((board) => {
     console.log("Invoked to render boards");
     return (<li>
-      <BoardDisplay onClickBoard={onClickBoard} board={board}></BoardDisplay>
+      <BoardDisplay key={board.board_id} onClickBoard={onClickBoard} board={board}></BoardDisplay>
     </li>)
   });
 
   useEffect(() => {
-    axios.get("http://localhost:5000/boards", {
+    axios.get("https://wm-inspo-board.herokuapp.com/boards", {
     }).then((response) => {
       setBoards(response.data);
     })
   }, []);
 
   const onFormSubmit = (newBoard) => {
-    axios.post("http://localhost:5000/boards", newBoard).then((response) => {
+    axios.post("https://wm-inspo-board.herokuapp.com/boards", newBoard).then((response) => {
       const currentBoards= [...boards];
       currentBoards.push(response.data);
       setBoards(currentBoards);
@@ -64,12 +64,11 @@ function App() {
 
       <hr />
 
-      <h2>Selected Board</h2>
-      <p>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : "Select a board!"}</p>
+      <h2>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : "Select a board!"}</h2>
       
       <hr />
 
-      {selectedBoard.board_id ? <Board board={selectedBoard}></Board> : ''}
+      {selectedBoard.board_id ? <Board key={selectedBoard.board_id} board={selectedBoard}></Board> : ''}
     </section>
   );
 }

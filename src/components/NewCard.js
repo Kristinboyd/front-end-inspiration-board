@@ -41,8 +41,8 @@ const NewCard = (props) =>{
 
 NewCard.propTypes = {
 
-    nextId: propTypes.number.isRequired,
-    addNewCard: propTypes.func.isRequired,
+    // nextId: propTypes.number.isRequired,
+    createNewCard: propTypes.func.isRequired,
 
 };
 
