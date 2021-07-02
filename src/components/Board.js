@@ -78,21 +78,22 @@ const Board = (props) => {
     const deleteCard = (id) => {
         let newCardsList = [];
         for (const item of cardsList) {
-        // cardsList is pulled from the API, meaning anything in cardsList should ideally have a matching id
-        if(id === item.card.id) {
-            axios.delete(`${BASE_URL}boards/${currentBoard.board_id}/cards/${id}`)
-            // if successful, deleted, send confirmation to console
-            .then((response) => {
-                console.log(`Card ${id} successfully deleted`);
-                setErrorMessage(null);
-            })
-            .catch((error) => {
-                // don't add the card back in -- likely this card was deleted from the api after components mounted
-                setErrorMessage([`Could not delete card ${id}.`]);
-            });
-        } else {
-            newCardsList.push(item);
-        }
+            // cardsList is pulled from the API, meaning anything in cardsList should ideally have a matching id
+            if(id === item.card_id) {
+                axios.delete(`${BASE_URL}boards/${currentBoard.board_id}/cards/${id}`)
+                // if successful, deleted, send confirmation to console
+                .then((response) => {
+                    console.log(`Card ${id} successfully deleted`);
+                    setErrorMessage(null);
+                })
+                .catch((error) => {
+                    // don't add the card back in -- likely this card was deleted from the api after components mounted
+                    setErrorMessage([`Could not delete card ${id}.`]);
+                });
+            } else {
+                newCardsList.push(item);
+            }
+            // note: fails silently if you pass a nonexistent id number
         }
 
         setCardsList(newCardsList);
