@@ -19,7 +19,7 @@ const Card = (props) => {
             <div className='card__like'>
                 <button className='card__like-button'
                 onClick={() => props.likeCard(props.id)}>
-                    {props.likes > 0 ? `${props.likes} Likes` : "Like"}
+                    {(props.likes > 0) ? `${props.likes} Likes` : "Like"}
                 </button>
             </div>
         </div>
