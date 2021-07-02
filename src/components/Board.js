@@ -100,7 +100,7 @@ const Board = (props) => {
         for (const item of cardsList) {
             // cardsList is pulled from the API, meaning anything in cardsList should ideally have a matching id
             if(id === item.card_id) {
-                axios.post(`${BASE_URL}boards/${currentBoard.board_id}/cards/${id}/like`)
+                axios.post(`${BASE_URL}boards/${currentBoard.board_id}/cards/${id}/likes`)
                 // if successful, send confirmation to console
                 .then((response) => {
                     console.log(`Card ${id} successfully liked`);
