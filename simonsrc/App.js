@@ -28,7 +28,7 @@ function App() {
   //^^ to-do: track down why we use empty list as a parameter out of Learn*****************
 
   //this is a function we call to tell which board we want to make active
-  //is used as a helper function for line 36; make sure Kristin doesn't "cargo cult" this pattern, maybe just name the function how we want the first time
+  //is used as a helper function for line 36; make sure Kristin doesn't "copy" this pattern, maybe just name the function how we want the first time
   const selectBoard = (board) => { setSelectedBoard(board) };
 
     // methinks boardsData is automatically called by the useState hook black magic whenever the api fetches data or boardsData is otherwise changed
