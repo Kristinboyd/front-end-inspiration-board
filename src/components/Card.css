@@ -1,0 +1,26 @@
+.card-item {
+    font-family: 'Permanent Marker';
+    font-size: 1rem;
+    word-break: break-word;
+    background-color: rgb(249, 238, 123);
+    box-shadow: -10px 7px 7px rgb(160, 64, 64);
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    flex-direction: column;
+}
+
+.card-item__controls {
+    font-family: Trebuchet;
+    color: white;
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    justify-content: space-evenly;
+    background-color: rgba(6, 215, 37, 0.536);
+}
+
+

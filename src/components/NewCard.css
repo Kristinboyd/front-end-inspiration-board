@@ -1,0 +1,38 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+}
+
+h1, 
+h2 {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0.6em 1em;
+    display: inline-block;
+    color: black;
+}
+
+h1 {
+    background-color: rgba(6, 215, 37, 0.536);
+    transform: rotate(-5deg) skew(-10deg);
+    text-emphasis-style: bold;
+}
+
+.new-card-form__form {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2em;
+    width: 100%;
+}
+
+.new-card-form__form-text-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.new-card-form__form-button {
+    padding: 0.5em;
+    background-color: #ffcc66;
+    border: 2px solid black;
+    font-family: Permanent Marker;
+}

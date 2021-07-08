@@ -1,5 +1,3 @@
-// edited 
-
 import { React, useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
@@ -30,35 +28,35 @@ const NewBoard = (props) => {
     }
 
     return (
-        <section className="new-board-form">
+        <section className='new-board-form__form'>
             <div>
-                <h4>New Board</h4>
                 <form onSubmit={submitNewBoard}
                     className={hidden === true ? "invisible" : "visible"}>
-                    <p>Title</p>
+                    <p>Title:
                     <input 
                     type='text' 
                     name='title'
                     value={title} 
-                    onChange={(e) => setTitle(e.target.value)} />
+                    onChange={(e) => setTitle(e.target.value)} /></p>
 
-                    <p>Owner's Name</p>
+                    <p>Owner's Name:
                     <input
                     type='text' 
                     name='owner'
                     value={owner} 
-                    onChange={(e) => { setOwner(e.target.value) } } />
+                    onChange={(e) => { setOwner(e.target.value) } } /></p>
 
                     <input 
-                    className='form-submit-button'
+                    className='new-board-form__form-submit-btn'
                     value='submit'
-                    type='submit' />
+                    type='submit' 
+                    disabled={((title.length === 0) || (owner.length === 0) || (title.length > 40) || (owner.length > 40))}/>
 
                     <p>Preview: {title} - {owner}</p>
                 </form>
             </div>
 
-            <button onClick={toggleHidden}>Hide</button>
+            <button onClick={toggleHidden}className='new-board-form__toggle-btn'>Hide</button>
         </section>
 
     );

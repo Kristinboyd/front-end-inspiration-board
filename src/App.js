@@ -47,28 +47,29 @@ function App() {
 
   return (
 
-    <section>
-      <header className='header'>
-        <h1>Inspiration Board!</h1>
+    <section className='App'>
+      <header id='header'>
+        <h1>WaterMelon Mustard: Inspiration Board!</h1>
+        
+        <div>
+
+          <h2>Create a New Board</h2>
+          <NewBoard onFormSubmit={onFormSubmit} />
+
+        </div>
+        <div>
+          <h2>Existing Boards</h2>
+          <ol className='boards__list'>
+            {boardsElements}
+          </ol>
+        </div>
       </header>
-
-      <h2>Boards</h2>
-      <ol>
-        {boardsElements}
-      </ol>
-
-      <hr />
-
-      <h2>Create a New Board</h2>
-      <NewBoard onFormSubmit={onFormSubmit} />
-
-      <hr />
-
-      <h2>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : "Select a board!"}</h2>
       
-      <hr />
+      <div>
+      <h2>{selectedBoard.board_id ? `${selectedBoard.title} - ${selectedBoard.owner}` : "Select a board!"}</h2>
 
       {selectedBoard.board_id ? <Board key={selectedBoard.board_id} board={selectedBoard}></Board> : ''}
+      </div>
     </section>
   );
 }

@@ -1,11 +1,9 @@
-// edited 
-
-
-
 import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import "./Board.css"
+import "./Card.css"
+import "./CardList.css"
 import Card from './Card.js';
 import NewCard from './NewCard.js';
 
@@ -89,7 +87,7 @@ const Board = (props) => {
             } else {
                 newCardsList.push(item); 
             }
-            // note: fails silently if you pass a nonexistent id number. aaaaand that's the issue/ okay look at prop types
+            // note: fails silently if you pass a nonexistent id number. 
         }
         setCardsList(newCardsList);
     }
@@ -104,7 +102,8 @@ const Board = (props) => {
                 // if successful, send confirmation to console
                 .then((response) => {
                     console.log(`Card ${id} successfully liked`);
-                    item.likes = item.likes + 1;
+                    //console.log(`this card has ${props.likes}`) ; props likes aren't available here 
+                    item.likes_count = item.likes_count + 1;
                     setErrorMessage(null);
                 })
                 .catch((error) => {
@@ -126,12 +125,12 @@ const Board = (props) => {
         let cardsList = [];
 
         for(const item of cards) {
-            cardsList.push(<Card id={item.card_id} likes={item.likes} key={item.card_id} text={item.message} deleteCard={deleteCard} likeCard={likeCard}/>);
+            cardsList.push(<Card id={item.card_id} likes={item.likes_count} key={item.card_id} text={item.message} deleteCard={deleteCard} likeCard={likeCard}/>);
         }
         return cardsList;
     }
 
-    // if currentBoard changed
+    // if currentBoard changed, but this is never called upon...
 
     const changeCurrentBoard = (boardName) => {  
         updateBoard(boardName);
@@ -149,7 +148,6 @@ const Board = (props) => {
 
     const createNewCard = (message) => {
         axios.post(
-            // TODO: Change URI to ENV variable
             `https://wm-inspo-board.herokuapp.com/boards/${props.board.board_id}/cards`,
             {message}
         ).then((response) => {
@@ -169,10 +167,11 @@ const Board = (props) => {
                 {errorMessage ? allErrors(errorMessage) : ''}
             </ul>
         </article> 
-        <NewCard createNewCard={createNewCard} />
-        <section className = 'board'>
-            {allCards(cardsList, deleteCard)}
+        
+        <section className = 'card-items__container'>
+            {allCards(cardsList, deleteCard, likeCard)}
         </section>
+        <NewCard createNewCard={createNewCard} />
         </div>
     )
     };

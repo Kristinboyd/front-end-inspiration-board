@@ -1,0 +1,27 @@
+.card-items__container {
+    display: flex;
+    overflow-y: scroll;
+    flex-direction: column;
+    height: 50vh;
+    width: 50vh;
+    grid-gap: 2rem;
+    margin: 2rem;
+    
+}
+
+.card-items__container::-webkit-scrollbar-track {
+    padding: 2px 0;
+    background-color: #c4030323;
+  }
+  
+.card-items__container::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+.card-items__container::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(243, 4, 4, 0.3);
+    background-color: #02a70f8c;
+    border: 1px solid rgb(7, 7, 7);
+  }
+

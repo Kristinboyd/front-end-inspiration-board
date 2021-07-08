@@ -6,3 +6,28 @@
 .visible {
     display: inline; 
 }
+
+.new-board-form__container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.new-board-form__form {
+    color: #fffa66;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    width: 40%;
+    margin-right: 2rem;
+    margin-left: 10rem;
+}
+
+.new-board-form__form-submit-btn,
+.new-board-form__toggle-btn {
+    align-items: center;
+    padding: 0.5em;
+    width: 20%;
+    background-color: rgba(6, 215, 37, 0.536);
+    border: 2px solid black;
+}

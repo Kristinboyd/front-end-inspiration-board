@@ -1,5 +1,3 @@
-// edited 
-
 import PropTypes from 'prop-types'
 //import Card from './components/Card'
 import "./CardList.css"
@@ -19,10 +17,15 @@ const cardList = (props) => {
 
     return (
         <section>
-            <h3>Card List</h3>
-            <ul>
+            
+            {/*<select className='card-items-sort__selectfrm'>
+                <option value="alphabetically">Sort Alphabetically</option>
+                <option value="likes">See Most Liked first</option>
+                <option value="ID">Sort by ID</option>
+            </select>*/}
+            <div className='card-items__container'>
                 {cardComponents}
-            </ul>
+            </div>
         </section>
     );
 };
